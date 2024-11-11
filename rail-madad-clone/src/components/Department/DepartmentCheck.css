@@ -1,0 +1,131 @@
+.department-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.checker-card {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.checker-card h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.checker-card input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.checker-card button {
+  padding: 12px 20px;
+  background-color: #d90429;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.checker-card button:hover {
+  background-color: #c4011b;
+  transform: scale(1.05);
+}
+
+.checker-card p {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #555;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+
+.department-message {
+  font-size: 1.5rem;                       /* Increases font size */
+  font-weight: 700;                        /* Bold text for emphasis */
+  color: #ffffff;                          /* White text color for contrast */
+  background-color: #007bff;               /* Blue background for visibility */
+  padding: 15px 30px;                      /* Adds padding for spacing */
+  border-radius: 10px;                     /* Rounds the corners for a softer look */
+  margin-top: 15px;                        /* Adds some space above */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+  border: 1px solid #0056b3;               /* Light border for a neat outline */
+  transition: all 0.3s ease;               /* Smooth hover effect */
+}
+
+.department-message:hover {
+  background-color: #0056b3;               /* Darker blue on hover */
+  color: #ffffff;                          /* White color on hover for emphasis */
+  transform: scale(1.02);                  /* Slightly enlarges on hover */
+}
+
+.progress-message {
+  font-size: 1.2rem;                       /* Increases font size */
+  font-weight: 600;                        /* Semi-bold text for elegance */
+  color: #1a252f;                          /* Navy text color for a formal look */
+  background-color: #f4f6f8;               /* Light gray background for contrast */
+  padding: 15px 30px;                      /* Adds padding for spacing */
+  border-radius: 10px;                     /* Rounds the corners for a softer look */
+  margin-top: 15px;                        /* Adds some space above */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+  border: 1px solid #dfe6e9;               /* Light border for a neat outline */
+  transition: all 0.3s ease;               /* Smooth hover effect */
+}
+
+.progress-message:hover {
+  background-color: #eaf1f6;               /* Slightly darker gray on hover */
+  color: #1a252f;                          /* Darker navy color on hover for emphasis */
+  transform: scale(1.02);                  /* Slightly enlarges on hover */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #0056b3;
+}
