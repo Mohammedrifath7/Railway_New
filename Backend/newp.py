@@ -18,7 +18,8 @@ groq_headers = {
     "Content-Type": "application/json"
 }
 
-BASE_IMAGE_PATH = "D:/Projects/UI/Railway/Backend/uploads"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_IMAGE_PATH = os.path.join(BASE_DIR, "uploads")
 
 def query_huggingface(filename):
     with open(filename, "rb") as f:
