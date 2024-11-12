@@ -4,17 +4,21 @@ import requests
 import base64
 from pymongo import MongoClient
 from bson import ObjectId
+from dotenv import load_dotenv
 from groq import Groq
 
-client = MongoClient('mongodb://localhost:27017/')
+load_dotenv()
+
+MONGO_URI = os.getenv("MONGO_URI")
+client = MongoClient(MONGO_URI)
 db = client['railmadad']
 
 HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/Salesforce/blip-image-captioning-large"
-huggingface_headers = {"Authorization": "Bearer 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"}
+huggingface_headers = {"Authorization": f"Bearer {os.getenv('HUGGINGFACE_API')}"}
 
 GROQ_API_URL = "https://api.groq.com/v1/classify"
 groq_headers = {
-    "Authorization": "Bearer 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",
+    "Authorization": f"Bearer {os.getenv('GROQ_API')}",
     "Content-Type": "application/json"
 }
 
