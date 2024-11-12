@@ -15,7 +15,7 @@ const DepartmentCheck = () => {
   const handleCheck = async () => {
     try {
       setError(null);
-      const response = await axios.get(`http://localhost:5000/api/categories`, {
+      const response = await axios.get(`https://railway-new.onrender.com/api/categories`, {
         params: { pnrNumber: input, phoneNumber: input },
       });
 

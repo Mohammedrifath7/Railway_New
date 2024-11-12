@@ -61,7 +61,7 @@ const GrievanceForm = () => {
     });
 
     try {
-      const response = await fetch('http://localhost:5000/api/grievances', {
+      const response = await fetch('https://railway-new.onrender.com/api/grievances', {
         method: 'POST',
         body: formDataObj,
       });
