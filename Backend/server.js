@@ -48,7 +48,7 @@ mongoose.connect(MONGO_URI, {
 }).catch((err) => {
   console.error('Error connecting to MongoDB:', err);
 });
-
+console.log("Groq API Key:", process.env.GROQ_API);
 // Routes
 app.use('/api/grievances', grievanceRoutes);
 app.use('/api', grievanceRoutes);
