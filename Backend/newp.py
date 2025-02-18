@@ -21,6 +21,7 @@ groq_headers = {
     "Authorization": f"Bearer {os.getenv('GROQ_API')}",
     "Content-Type": "application/json"
 }
+GROQ_API_KEY = os.getenv("GROQ_API")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_IMAGE_PATH = os.path.join(BASE_DIR, "uploads")
@@ -43,7 +44,8 @@ def query_huggingface(filename):
         raise Exception(f"Error: {response.status_code}, {response.text}")
 
 def classify_text_with_groq(text_data):
-    client = Groq(api_key="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")
+    
+    client = Groq(api_key=GROQ_API_KEY)
     prompt = (
         f"Given the description '{text_data}', classify the issue into one of the following categories:\n"
         "\"Medical Assistance\", \"Security\", \"Divyangjan Facilities\", "
