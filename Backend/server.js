@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/uploads', express.static('uploads'));
 
 const allowedOrigins = [
-  'https://railhelp.netlify.app/', // Add your Netlify URL here
+  'https://railhelp.netlify.app', // Add your Netlify URL here
   'http://localhost:3000' // For local testing
 ];
 app.use(cors({
