@@ -13,13 +13,13 @@ const GrievanceForm = () => {
     incidentTime: '',
     file: null
   });
-  
+
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false); // ✅ NEW
   const navigate = useNavigate();
 
   const validateForm = () => {
     const newErrors = {};
-
     if (!formData.phoneNumber.match(/^[6-9]\d{9}$/)) {
       newErrors.phoneNumber = 'Enter a valid 10-digit phone number';
     }
@@ -51,9 +51,7 @@ const GrievanceForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     const formDataObj = new FormData();
     Object.keys(formData).forEach((key) => {
@@ -61,6 +59,7 @@ const GrievanceForm = () => {
     });
 
     try {
+      setLoading(true); // ✅ Start loading
       const response = await fetch('https://railway-new.onrender.com/api/grievances', {
         method: 'POST',
         body: formDataObj,
@@ -70,53 +69,37 @@ const GrievanceForm = () => {
       navigate('/submission-success');
     } catch (error) {
       console.error('Error submitting form:', error);
+    } finally {
+      setLoading(false); // ✅ Stop loading
     }
   };
 
   return (
     <div className="form-container">
-      <button className="nav-button_new"  onClick={() => navigate('/department-check')}>
+      <button className="nav-button_new" onClick={() => navigate('/department-check')}>
         Go to Department Check
       </button>
+
+      {loading && <div className="loader-overlay"><div className="loader"></div></div>} {/* ✅ Loader Overlay */}
+
       <form className="grievance-form" onSubmit={handleSubmit}>
         <h2>Grievance Detail</h2>
 
         <label>
           Phone Number:
-          <input
-            type="text"
-            name="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-            placeholder="Enter your phone number"
-            required
-          />
+          <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} placeholder="Enter your phone number" required />
           {errors.phoneNumber && <span className="error">{errors.phoneNumber}</span>}
         </label>
 
         <div className="form-row">
           <label>
             Train Number:
-            <input
-              type="text"
-              name="trainNumber"
-              value={formData.trainNumber}
-              onChange={handleChange}
-              placeholder="Enter the train number"
-              required
-            />
+            <input type="text" name="trainNumber" value={formData.trainNumber} onChange={handleChange} placeholder="Enter the train number" required />
             {errors.trainNumber && <span className="error">{errors.trainNumber}</span>}
           </label>
           <label>
             PNR Number:
-            <input
-              type="text"
-              name="pnrNumber"
-              value={formData.pnrNumber}
-              onChange={handleChange}
-              placeholder="Enter your PNR number"
-              required
-            />
+            <input type="text" name="pnrNumber" value={formData.pnrNumber} onChange={handleChange} placeholder="Enter your PNR number" required />
             {errors.pnrNumber && <span className="error">{errors.pnrNumber}</span>}
           </label>
         </div>
@@ -145,12 +128,7 @@ const GrievanceForm = () => {
         <div className="form-row">
           <label>
             Problem Description:
-            <textarea
-              name="problemDescription"
-              value={formData.problemDescription}
-              onChange={handleChange}
-              placeholder="Describe your problem"
-            />
+            <textarea name="problemDescription" value={formData.problemDescription} onChange={handleChange} placeholder="Describe your problem" />
           </label>
         </div>
 
@@ -172,7 +150,7 @@ const GrievanceForm = () => {
           </label>
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" disabled={loading}>Submit</button> {/* Disable while loading */}
       </form>
     </div>
   );
