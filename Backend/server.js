@@ -24,7 +24,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/uploads', express.static('uploads'));
 
 const allowedOrigins = [
-  'https://railcomp.netlify.app', // Add your Netlify URL here
+  'https://railcomp.netlify.app',
+  'https://railhelp.netlify.app',
+   // Add your Netlify URL here
   'http://localhost:5173' // For local testing
 ];
 app.use(cors({
@@ -57,3 +59,4 @@ app.use('/api', grievanceRoutes);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
