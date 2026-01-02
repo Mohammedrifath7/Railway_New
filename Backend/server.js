@@ -8,7 +8,8 @@ require('dotenv').config(); // Load environment variables from .env file
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGO_URI;
+// const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = "mongodb+srv://rifathjainulla12345_db_user:mIj3t1NX236X4cmg@cluster0.jhr93uw.mongodb.net/?appName=Cluster0";
 
 if (!MONGO_URI) {
   console.error("Error: MONGO_URI is not defined in the .env file");
